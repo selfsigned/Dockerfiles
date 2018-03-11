@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ $(docker inspect -f '{{.State.Running}}' weechat) == 'true' ]
+then
+	docker attach weechat
+else
+	docker run -it --rm --name weechat -e TZ="Europe/Paris" -v $HOME/.weechat:/home/weechat/.weechat -p 9001:9001 selfsigned/weechat-void-otr
+fi
