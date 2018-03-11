@@ -1,13 +1,13 @@
 # Videogame dockerfile example
 # TODO: try volume integration ?
 
-FROM voidlinux/voidlinux
+FROM selfsigned/void-vidya-base
 LABEL maintainer="selfsigned@protonmail.ch"
 
-RUN xbps-install -Syu \
-	xorg-minimal
-
-# mesa drivers, pick the one you need
-RUN xbps-install -Sy mesa-ati-dri mesa-intel-dri tesseract
+RUN xbps-install -Syu tesseract
 
 CMD tesseract
+
+# And then:
+# x11docker --gpu --pulseaudio tesseract
+# Easy right?
