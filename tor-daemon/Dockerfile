@@ -1,7 +1,6 @@
 FROM alpine
 
-RUN apk update && apk upgrade
-RUN apk add tor
+RUN apk --no-cache add tor
 
 RUN adduser -S user
 USER user
